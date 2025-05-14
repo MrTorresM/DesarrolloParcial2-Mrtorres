@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidatosModule } from './candidatos/candidatos.module';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -13,6 +14,7 @@ import { CandidatosModule } from './candidatos/candidatos.module';
     BrowserModule,
     AppRoutingModule,
     CandidatosModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

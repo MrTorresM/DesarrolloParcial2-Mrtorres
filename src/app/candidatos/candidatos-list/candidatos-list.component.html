@@ -1,26 +1,36 @@
 <div class="container">
-    <h1 class="mt-4">Candidatos a Papa - 2025</h1>
 
-    <table class="table table-bordered mt-4">
-        <thead>
-            <tr style="--bs-table-bg: #C41E3A; --bs-table-color: white;">
-                <th scope="col">Nombre</th>
-                <th scope="col">Foto</th>
-                <th scope="col">Pais Origen</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Vertiente Religiosa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let candidato of candidatos" (click)="seleccionarCandidato(candidato)">
-                <td>{{ candidato.nombre }}</td>
-                <td><img [src]="candidato.foto" alt="{{ candidato.nombre }}" style="width: 50px; height: auto;"></td>
-                <td>{{ candidato.pais_origen }}</td>
-                <td>{{ candidato.edad }} años</td>
-                <td>{{ candidato.vertiente_religiosa }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1 class="text-center" style="--bs-table-bg: #C41E3A; --bs-table-color: white;">Candidatos a Papa - 2025</h1>
+
+<div class="col" *ngIf="seleccionado">
+    <app-candidatos-detail [candidato]="candidatoSeleccionado"></app-candidatos-detail>
+</div>
+  <br>
+  <div class="row mb-8" style="display: flex; justify-content: center; align-items: center;">
+    <div *ngFor="let candidato of candidatos" class="candidato-card col mb-2" style="max-width: 14rem; height: 23rem;">
+      <div class="card p-2 mb-2" style="width: 12rem; height: 23rem">
+        <a class="card-block text-decoration-none" (click)="seleccionarCandidato(candidato)">
+
+          <img class="card-img-top" style="height: 14rem;" src="{{ candidato.foto }}" alt="{{ candidato.nombre }}" />
+          <div class="card-body black-text">
+            <h5 class="card-title">{{ candidato.nombre }}</h5>
+            <p class="card-text"><b>Edad:</b>
+              {{ candidato.edad }}
+            </p>
+            <p class="card-text"><b>Pais:</b>
+              {{ candidato.pais_origen }}
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <br>
+    <br>
+  </div>
+
+    <p>El próximo Papa será: (call: getRandomCandidato)</p>
 
     <app-candidatos-detail *ngIf="candidatoSeleccionado" [candidato]="candidatoSeleccionado"></app-candidatos-detail>
 </div>
